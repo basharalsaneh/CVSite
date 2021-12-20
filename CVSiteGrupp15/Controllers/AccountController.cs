@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CVSiteGrupp15.Models;
+using Data;
 
 namespace CVSiteGrupp15.Controllers
 {
