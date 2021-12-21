@@ -15,11 +15,4 @@ namespace Data.Models
         public string Title { get; set; }
         public string Description { get; set; }
     }
-
-    //public class ProjectDBContext : DbContext
-    //{
-    //    public DbSet<Project> Projects { get; set; }
-
-    //    //public System.Data.Entity.DbSet<CVSiteGrupp15.Models.Project> Projects { get; set; }
-    //}
 }
