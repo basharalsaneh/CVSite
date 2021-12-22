@@ -17,9 +17,24 @@ namespace CVSiteGrupp15.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Projects
-        public ActionResult Index()
+        //public ActionResult Index()
+        //{
+        //    return View(db.Projects.ToList());
+        //}
+
+        public ActionResult Index(string option, string search)
         {
-            return View(db.Projects.ToList());
+
+
+            if (option == "search")
+            {
+                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                return View(db.Projects.Where(x => x.Title == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Projects.Where(x => x.Title.StartsWith(search) || search == null).ToList());
+            }
         }
 
         // GET: Projects/Details/5

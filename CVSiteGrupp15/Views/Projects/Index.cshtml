@@ -6,6 +6,16 @@
 
 <h2>Index</h2>
 
+<form>
+    @using (Html.BeginForm("Index", "Projects", FormMethod.Get))
+    {
+        //the following are search options
+        <b> Search Option: </b>
+        @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" />
+    }
+</form>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
