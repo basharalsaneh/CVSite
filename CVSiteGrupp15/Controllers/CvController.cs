@@ -32,19 +32,15 @@ namespace CVSiteGrupp15.Controllers
 
         // POST: Cv/Create
         [HttpPost]
-        public ActionResult Create(Cv model)
+        public ActionResult Create([Bind(Include = "Competence,Education,Experience")] Cv cv)
         {
             try
             {
                 // TODO: Add insert logic here
-                var user = User.Identity.GetUserId();
-                var cv = new Cv()
-                {
-                    Competence = model.Competence,
-                    Education = model.Education,
-                    Experience = model.Experience,
-                    UserId = user,
-                };
+                var user = User.Identity.GetUserId(); // Hämtar inloggad användare
+
+                cv.UserId = user; // Tilldela cv propertyn UserId värdet på den inloggade användarens id
+                
                 db.Cvs.Add(cv);
                 db.SaveChanges();
 
