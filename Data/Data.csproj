@@ -75,11 +75,29 @@
     <Compile Include="Migrations\202112211657351_cvtest1.Designer.cs">
       <DependentUpon>202112211657351_cvtest1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112221155107_projekttest.cs" />
+    <Compile Include="Migrations\202112221155107_projekttest.Designer.cs">
+      <DependentUpon>202112221155107_projekttest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112221158569_projekttest2.cs" />
+    <Compile Include="Migrations\202112221158569_projekttest2.Designer.cs">
+      <DependentUpon>202112221158569_projekttest2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112221236499_newprjectmodel.cs" />
+    <Compile Include="Migrations\202112221236499_newprjectmodel.Designer.cs">
+      <DependentUpon>202112221236499_newprjectmodel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112221244316_manytomanytest2.cs" />
+    <Compile Include="Migrations\202112221244316_manytomanytest2.Designer.cs">
+      <DependentUpon>202112221244316_manytomanytest2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112221349015_many2manyApplicationuserprojects.cs" />
+    <Compile Include="Migrations\202112221349015_many2manyApplicationuserprojects.Designer.cs">
+      <DependentUpon>202112221349015_many2manyApplicationuserprojects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Competence.cs" />
+    <Compile Include="Models\ApplicationUserProject.cs" />
     <Compile Include="Models\Cv.cs" />
-    <Compile Include="Models\Education.cs" />
-    <Compile Include="Models\Experience.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -102,6 +120,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112211657351_cvtest1.resx">
       <DependentUpon>202112211657351_cvtest1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221155107_projekttest.resx">
+      <DependentUpon>202112221155107_projekttest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221158569_projekttest2.resx">
+      <DependentUpon>202112221158569_projekttest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221236499_newprjectmodel.resx">
+      <DependentUpon>202112221236499_newprjectmodel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221244316_manytomanytest2.resx">
+      <DependentUpon>202112221244316_manytomanytest2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112221349015_many2manyApplicationuserprojects.resx">
+      <DependentUpon>202112221349015_many2manyApplicationuserprojects.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Data.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Data
 {
@@ -12,6 +14,7 @@ namespace Data
     {
         public string Address { get; set; }
         public virtual Cv Cv { get; set; }
+        public virtual ICollection<Project> Projects {get; set;}
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -31,8 +34,19 @@ namespace Data
 
         public DbSet<Project> Projects { get; set; }
         public DbSet<Cv> Cvs { get; set; }
+        public DbSet<ApplicationUserProject> ApplicationUserProjects { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
 
+            //Write Fluent API configurations here
+            modelBuilder.Entity<ApplicationUser>()
+             .HasMany(t => t.Projects)
+             .WithMany(t => t.Users);
+
+        }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

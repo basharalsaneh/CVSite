@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Data;
 using Data.Models;
+using Microsoft.AspNet.Identity;
 
 namespace CVSiteGrupp15.Controllers
 {
@@ -47,16 +48,40 @@ namespace CVSiteGrupp15.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description")] Project project)
+        public ActionResult Create(Project project)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Projects.Add(project);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+
+                    var newProject = new Project()
+
+                    {
+                        Title = project.Title,
+                        Description = project.Description,
+
+                    };
+                    db.Projects.Add(newProject);
+                    db.SaveChanges();
+                    var userProject = new ApplicationUserProject()
+                    {
+                        ApplicationUserId = User.Identity.GetUserId(),
+                        ProjectId = newProject.Id,
+                    };
+
+                    db.ApplicationUserProjects.Add(userProject);
+                    db.SaveChanges();
+                   
+                }
                 return RedirectToAction("Index");
             }
+            
 
-            return View(project);
+            catch
+            {
+                return View(project);
+            }
         }
 
         // GET: Projects/Edit/5
