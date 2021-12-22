@@ -10,14 +10,14 @@ namespace Data.Models
 {
    public class Cv
     {
-        [Key]
-        public int Id { get; set; }
-        public virtual ICollection<Education> Educations { get; set; }
-        public virtual ICollection<Competence> Competences { get; set; }
-        public virtual ICollection<Experience> Experiences { get; set; }
+        [Key, ForeignKey("ApplicationUser")]
+        public string UserId { get; set; }
 
-        [ForeignKey("ApplicationUser")]
-        public int ApplicationUserId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
+        public string Competence { get; set; }
+        public string Education { get; set; }
+        public string Experience { get; set; }
+
+
     }
 }

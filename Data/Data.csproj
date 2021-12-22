@@ -59,6 +59,22 @@
     <Compile Include="Migrations\202112201439216_newdata.Designer.cs">
       <DependentUpon>202112201439216_newdata.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112211354313_test.cs" />
+    <Compile Include="Migrations\202112211354313_test.Designer.cs">
+      <DependentUpon>202112211354313_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112211408551_cvs.cs" />
+    <Compile Include="Migrations\202112211408551_cvs.Designer.cs">
+      <DependentUpon>202112211408551_cvs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112211537485_removecvs.cs" />
+    <Compile Include="Migrations\202112211537485_removecvs.Designer.cs">
+      <DependentUpon>202112211537485_removecvs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202112211657351_cvtest1.cs" />
+    <Compile Include="Migrations\202112211657351_cvtest1.Designer.cs">
+      <DependentUpon>202112211657351_cvtest1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Competence.cs" />
     <Compile Include="Models\Cv.cs" />
@@ -74,6 +90,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202112201439216_newdata.resx">
       <DependentUpon>202112201439216_newdata.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112211354313_test.resx">
+      <DependentUpon>202112211354313_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112211408551_cvs.resx">
+      <DependentUpon>202112211408551_cvs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112211537485_removecvs.resx">
+      <DependentUpon>202112211537485_removecvs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112211657351_cvtest1.resx">
+      <DependentUpon>202112211657351_cvtest1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
