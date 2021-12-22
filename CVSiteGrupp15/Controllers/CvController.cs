@@ -30,17 +30,20 @@ namespace CVSiteGrupp15.Controllers
             return View();
         }
 
-        // POST: Cv/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "Competence,Education,Experience")] Cv cv)
+        public ActionResult Create(Cv model)
         {
             try
             {
                 // TODO: Add insert logic here
                 var user = User.Identity.GetUserId(); // Hämtar inloggad användare
-
-                cv.UserId = user; // Tilldela cv propertyn UserId värdet på den inloggade användarens id
-                
+                var cv = new Cv() // Skapar nytt cv
+                {
+                    Competence = model.Competence,
+                    Education = model.Education,
+                    Experience = model.Experience,
+                    UserId = user,
+                };
                 db.Cvs.Add(cv);
                 db.SaveChanges();
 
@@ -51,6 +54,8 @@ namespace CVSiteGrupp15.Controllers
                 return View();
             }
         }
+
+
 
         // GET: Cv/Edit/5
         public ActionResult Edit(int id)
