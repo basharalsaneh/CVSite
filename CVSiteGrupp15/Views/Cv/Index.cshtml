@@ -1,11 +1,58 @@
-﻿@model Data.Models.Cv
+﻿@model IEnumerable<Data.Models.Cv>
 
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
+
+<form>
+    @using (Html.BeginForm("Index", "Cv", FormMethod.Get))
+    {
+        //the following are search options
+        <b> Search Option By Eduction: </b>
+        @Html.TextBox("search")
+        <input type="submit" name="submit" value="Search" />
+    }
+</form>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
 
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Competence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Education)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experience)
+
+        </th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(Modelitem => item.Competence)
+            </td>
+            <td>
+                @Html.DisplayFor(Modelitem => item.Education)
+            </td>
+            <td>
+                @Html.DisplayFor(Modelitem => item.Experience)
+            </td>
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.UserId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
+                </td>*@
+        </tr>
+    }
+
+    </table>

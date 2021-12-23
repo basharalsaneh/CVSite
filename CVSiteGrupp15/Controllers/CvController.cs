@@ -13,9 +13,19 @@ namespace CVSiteGrupp15.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Cv
-        public ActionResult Index()
+        public ActionResult Index(string option, string search)
         {
-            return View();
+
+
+            if (option == "")
+            {
+                //Index action method will return a view with a cv records based on what a user specify the value in textbox  
+                return View(db.Cvs.Where(x => x.Education == search || search == null).ToList());
+            }
+            else
+            {
+                return View(db.Cvs.Where(x => x.Education.StartsWith(search) || search == null).ToList());
+            }
         }
 
         // GET: Cv/Details/5

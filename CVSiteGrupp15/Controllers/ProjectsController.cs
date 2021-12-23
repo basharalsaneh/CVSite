@@ -26,9 +26,9 @@ namespace CVSiteGrupp15.Controllers
         {
 
 
-            if (option == "search")
+            if (option == "")
             {
-                //Index action method will return a view with a student records based on what a user specify the value in textbox  
+                //Index action method will return a view with a project records based on what a user specify the value in textbox  
                 return View(db.Projects.Where(x => x.Title == search || search == null).ToList());
             }
             else
