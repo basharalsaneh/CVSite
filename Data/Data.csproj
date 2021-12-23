@@ -95,6 +95,10 @@
     <Compile Include="Migrations\202112221349015_many2manyApplicationuserprojects.Designer.cs">
       <DependentUpon>202112221349015_many2manyApplicationuserprojects.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112231611324_name1.cs" />
+    <Compile Include="Migrations\202112231611324_name1.Designer.cs">
+      <DependentUpon>202112231611324_name1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUserProject.cs" />
     <Compile Include="Models\Cv.cs" />
@@ -135,6 +139,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112221349015_many2manyApplicationuserprojects.resx">
       <DependentUpon>202112221349015_many2manyApplicationuserprojects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112231611324_name1.resx">
+      <DependentUpon>202112231611324_name1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

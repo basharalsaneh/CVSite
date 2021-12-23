@@ -13,18 +13,35 @@ namespace CVSiteGrupp15.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Cv
-        public ActionResult Index(string option, string search)
+        public ActionResult Index(string search)
         {
+            var user = User.Identity.GetUserId();
 
-
-            if (option == "")
+            if (!String.IsNullOrEmpty(search))
             {
-                //Index action method will return a view with a cv records based on what a user specify the value in textbox  
-                return View(db.Cvs.Where(x => x.Education == search || search == null).ToList());
+
+                //Hämta id från anvädaren som man söker på
+                var userid = (from n in db.Users
+                            where n.Name == search
+                            select n.Id).FirstOrDefault();
+
+                //Hämta det cv som är kopplat till det användarid som vi hämtade i den föregående queryn
+                var userQuery = (from F in db.Cvs
+                               where F.UserId == userid
+                               select F.UserId).FirstOrDefault();
+
+
+
+                                   //Index action method will return a view with a cv records based on what a user specify the value in textbox  
+                                   // Sök fram användares cv genom att ange id-hash
+                return View(db.Cvs.Where(x => x.UserId == userQuery).ToList());
+
+                
             }
             else
             {
-                return View(db.Cvs.Where(x => x.Education.StartsWith(search) || search == null).ToList());
+                //return View(db.Cvs.Where(x => x.Education.StartsWith(search) || search == null).ToList());
+                return View(db.Cvs.Where(x => x.UserId == user).ToList());
             }
         }
 
