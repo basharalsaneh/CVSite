@@ -1,8 +1,12 @@
 ﻿@model IEnumerable<Data.Models.Cv>
+@using Data.Models
 
 @{
     ViewBag.Title = "Index";
 }
+
+
+
 
 <h2>Index</h2>
 
@@ -37,6 +41,9 @@
 
     @foreach (var item in Model)
     {
+
+        var userid = item.UserId; //item.UserId;
+
         <tr>
             <td>
                 @Html.DisplayFor(Modelitem => item.Competence)
@@ -52,7 +59,15 @@
                     @Html.ActionLink("Details", "Details", new { id = item.UserId }) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.UserId })
                 </td>*@
+
+
+            <p>
+                @Html.ActionLink("Visa användarens projekt", "Personal", "Projects", new { userid }, htmlAttributes: null)
+            </p>
+
         </tr>
     }
 
-    </table>
+</table>
+
+

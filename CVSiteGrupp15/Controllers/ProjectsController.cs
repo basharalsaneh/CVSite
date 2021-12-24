@@ -24,7 +24,7 @@ namespace CVSiteGrupp15.Controllers
 
         public ActionResult Index(string option, string search)
         {
-
+            
 
             if (option == "")
             {
@@ -155,6 +155,22 @@ namespace CVSiteGrupp15.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult Personal(string userid)
+        {
+            //ViewBag.NameTransfer = userid;
+
+            var results = (from F in db.ApplicationUserProjects
+                                   //join FT in db.ApplicationUserProjects on F.Id equals FT.ProjectId
+                             where F.ApplicationUserId == userid
+                           //select F.ProjectId
+                           select F.ProjectId).FirstOrDefault();
+
+
+           return View(db.Projects.Where(x => x.Id == results).ToList());
+            
+        }
+
 
         protected override void Dispose(bool disposing)
         {

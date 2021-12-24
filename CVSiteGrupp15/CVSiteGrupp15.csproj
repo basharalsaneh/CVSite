@@ -262,6 +262,7 @@
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Cv\Create.cshtml" />
     <Content Include="Views\Cv\Index.cshtml" />
+    <Content Include="Views\Projects\Personal.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Books\" />
