@@ -25,7 +25,13 @@
         <dd>
             @Html.DisplayFor(model => model.Description)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.imageUrl)
+        </dt>
 
+        <dd>
+            <img src="~/Content/img/@Model.imageUrl" class="img-thumbnail" style="width:100px; height:100px;" />
+        </dd>
     </dl>
 </div>
 <p>

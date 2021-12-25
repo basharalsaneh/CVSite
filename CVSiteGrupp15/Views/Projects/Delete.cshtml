@@ -27,6 +27,13 @@
             @Html.DisplayFor(model => model.Description)
         </dd>
 
+        <td>
+            @Html.DisplayFor(model => model.imageUrl)
+        </td>
+
+        <td>
+            <img src="~/Content/img/@Model.imageUrl" class="img-thumbnail" style="width:64px; height:64px;" />
+        </td>
     </dl>
 
     @using (Html.BeginForm()) {

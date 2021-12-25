@@ -75,6 +75,7 @@ namespace CVSiteGrupp15.Controllers
                     {
                         Title = project.Title,
                         Description = project.Description,
+                        imageUrl = project.imageUrl,
 
                     };
                     db.Projects.Add(newProject);
