@@ -26,14 +26,12 @@
                 <!-- Projects-->
                 @foreach (var item in Model)
                 {
+                
                     <div class="col-md-6 col-lg-4 mb-5">
                         <div class="portfolio-item mx-auto" data-bs-toggle="modal" data-bs-target="#item-@item.Id">
-                            @*<div class="portfolio-item-caption d-flex align-items-center justify-content-center h-100 w-100">
-                                    <div class="portfolio-item-caption-content text-center text-white"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>*@
                             <img class="img-fluid" src="~/Content/img/@item.imageUrl" alt="..." />
                             <h3>@item.Title</h3>
-                            <p>@item.Description</p>
+                            <a href="/Projects/Details/@item.Id"> Läs mer! </a>
                         </div>
                     </div>
                 }
