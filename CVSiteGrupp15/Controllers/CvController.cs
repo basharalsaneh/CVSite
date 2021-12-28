@@ -12,38 +12,95 @@ namespace CVSiteGrupp15.Controllers
     public class CvController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+
+
         // GET: Cv
         public ActionResult Index(string search)
         {
             var user = User.Identity.GetUserId();
 
-            if (!String.IsNullOrEmpty(search))
+            // om man ej är inloggad
+           if (User.Identity.Name == "")
             {
+                if (!String.IsNullOrEmpty(search))
+                {
 
-                //Hämta id från anvädaren som man söker på
-                var userid = (from n in db.Users
-                            where n.Name == search
-                            select n.Id).FirstOrDefault();
+                    //Hämta id från anvädaren som man söker på
+                    var userid = (from n in db.Users
+                                  where n.Name == search
+                                  select n.Id).FirstOrDefault();
 
-                //Hämta det cv som är kopplat till det användarid som vi hämtade i den föregående queryn
-                var userQuery = (from F in db.Cvs
-                               where F.UserId == userid
-                               select F.UserId).FirstOrDefault();
+                    var userSearched = (from n in db.Users
+                                        where n.Id == userid
+                                        select n).FirstOrDefault();
+
+                    // Om man inte är inloggad och söker på en privat profil så returneras inte deras cv
+                    if (userSearched.PrivateProfile == true) 
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        //Hämta det cv som är kopplat till det användarid som vi hämtade i den föregående queryn
+                        var userQuery = (from F in db.Cvs
+                                         where F.UserId == userid
+                                         select F.UserId).FirstOrDefault();
 
 
 
-                                   //Index action method will return a view with a cv records based on what a user specify the value in textbox  
-                                   // Sök fram användares cv genom att ange id-hash
-                return View(db.Cvs.Where(x => x.UserId == userQuery).ToList());
+                        //Index action method will return a view with a cv records based on what a user specify the value in textbox  
+                        // Sök fram användares cv genom att ange id-hash
+                        return View(db.Cvs.Where(x => x.UserId == userQuery).ToList());
+                    }
+                    
 
-                
+
+                }
+                else
+                {
+                    //return View(db.Cvs.Where(x => x.Education.StartsWith(search) || search == null).ToList());
+                    return View(db.Cvs.Where(x => x.UserId == user).ToList());
+                }
             }
-            else
+           else // om användaren är inloggad
             {
-                //return View(db.Cvs.Where(x => x.Education.StartsWith(search) || search == null).ToList());
-                return View(db.Cvs.Where(x => x.UserId == user).ToList());
+                if (!String.IsNullOrEmpty(search))
+                {
+
+                    //Hämta id från anvädaren som man söker på
+                    var userid = (from n in db.Users
+                                  where n.Name == search
+                                  select n.Id).FirstOrDefault();
+
+                    //Hämta det cv som är kopplat till det användarid som vi hämtade i den föregående queryn
+                    var userQuery = (from F in db.Cvs
+                                     where F.UserId == userid
+                                     select F.UserId).FirstOrDefault();
+
+
+
+                    //Index action method will return a view with a cv records based on what a user specify the value in textbox  
+                    // Sök fram användares cv genom att ange id-hash
+                    return View(db.Cvs.Where(x => x.UserId == userQuery).ToList());
+
+
+                }
+                else
+                {
+                    return View(db.Cvs.Where(x => x.UserId == user).ToList());
+                }
             }
+           
+
+            
         }
+
+
+
+
+
+
 
         // GET: Cv/Details/5
         public ActionResult Details(int id)
