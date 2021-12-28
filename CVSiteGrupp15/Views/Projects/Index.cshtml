@@ -1,4 +1,6 @@
 ﻿@model IEnumerable<Data.Models.Project>
+@using Microsoft.AspNet.Identity
+
 
 @{
     ViewBag.Title = "Index";
@@ -32,23 +34,33 @@
         </th>
     </tr>
 
-@foreach (var item in Model) {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Title)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.Description)
-    </td>
-    <td>
+
+    @foreach (var item in Model)
+    {
+
+        var userid = User.Identity.GetUserId(); //.Name
+
+       var projectId = item.Id;
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+              <td>
         <img src="~/Content/img/@item.imageUrl" class="img-thumbnail" style="width:64px; height:64px;" />
-    </td>
-    <td>
-        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-    </td>
-</tr>
-}
+             </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
+                @Html.ActionLink("Gå med i projekt", "Join", new { userid, projectId })
+
+            </td>
+        </tr>
+    }
+
 
 </table>

@@ -160,16 +160,42 @@ namespace CVSiteGrupp15.Controllers
         public ActionResult Personal(string userid)
         {
             //ViewBag.NameTransfer = userid;
+        
 
             var results = (from F in db.ApplicationUserProjects
-                                   //join FT in db.ApplicationUserProjects on F.Id equals FT.ProjectId
-                             where F.ApplicationUserId == userid
+                               //join FT in db.ApplicationUserProjects on F.Id equals FT.ProjectId
+                           where F.ApplicationUserId == userid
                            //select F.ProjectId
-                           select F.ProjectId).FirstOrDefault();
+                           select F.ProjectId).ToArray();
 
-
-           return View(db.Projects.Where(x => x.Id == results).ToList());
+           return View(db.Projects.Where(x => results.Contains(x.Id)).ToList());
             
+        }
+
+        public ActionResult Join(string userid, int projectId)
+        {
+     
+            try
+            {
+                var userProject = new ApplicationUserProject()
+                {
+                    ApplicationUserId = userid,
+                    ProjectId = projectId,
+                };
+
+                db.ApplicationUserProjects.Add(userProject);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                Response.Write("error");
+                return View();
+                
+            }
+
+
         }
 
 
