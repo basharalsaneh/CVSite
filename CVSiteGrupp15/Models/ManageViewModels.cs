@@ -83,4 +83,18 @@ namespace CVSiteGrupp15.Models
         public string SelectedProvider { get; set; }
         public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
     }
+
+    public class EditProfileViewModel
+    {
+        
+        [Display(Name = "Namn")]
+        public string Name { get; set; }
+
+        [Display(Name = "Adress")]
+        public string Address { get; set; }
+
+        [Display(Name = "Privat profil")]
+        public bool PrivateProfile { get; set; }
+    }
+
 }

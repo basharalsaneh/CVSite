@@ -115,6 +115,10 @@
     <Compile Include="Migrations\202112281147142_newdisplayforcv.Designer.cs">
       <DependentUpon>202112281147142_newdisplayforcv.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112281320469_userprivateprofile.cs" />
+    <Compile Include="Migrations\202112281320469_userprivateprofile.Designer.cs">
+      <DependentUpon>202112281320469_userprivateprofile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApplicationUserProject.cs" />
     <Compile Include="Models\Cv.cs" />
@@ -170,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202112281147142_newdisplayforcv.resx">
       <DependentUpon>202112281147142_newdisplayforcv.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112281320469_userprivateprofile.resx">
+      <DependentUpon>202112281320469_userprivateprofile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

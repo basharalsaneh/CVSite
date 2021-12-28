@@ -7,6 +7,9 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using CVSiteGrupp15.Models;
+using Data;
+using System.Data.Entity;
+using System.Net;
 
 namespace CVSiteGrupp15.Controllers
 {
@@ -15,6 +18,7 @@ namespace CVSiteGrupp15.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         public ManageController()
         {
@@ -243,6 +247,96 @@ namespace CVSiteGrupp15.Controllers
             AddErrors(result);
             return View(model);
         }
+
+        //
+        // GET: /Manage/EditProfile
+        public ActionResult EditProfile()
+        {
+            //var userid = User.Identity.GetUserId();
+            //var name = (from n in db.Users
+            //              where n.Id == userid
+            //              select n.Name).FirstOrDefault();
+            //var address = (from n in db.Users
+            //            where n.Id == userid
+            //            select n.Address).FirstOrDefault();
+            //var privateProfile = (from n in db.Users
+            //               where n.Id == userid
+            //               select n.PrivateProfile).FirstOrDefault();
+
+            //var model = new EditProfileViewModel
+            //{
+            //    Name = name,
+            //    Address = address,
+            //    PrivateProfile = privateProfile
+            //};
+
+
+            //if (userid == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //ApplicationUser user = db.Users.Find(userid);
+            //if (user == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            //return View(user);
+
+            var userid = User.Identity.GetUserId();
+
+            // Fetch the userprofile
+            ApplicationUser user = db.Users.FirstOrDefault(u => u.Id.Equals(userid));
+
+            // Construct the viewmodel
+            EditProfileViewModel model = new EditProfileViewModel();
+            model.Name = user.Name;
+            model.Address = user.Address;
+            model.PrivateProfile = user.PrivateProfile;
+
+            return View(model);
+
+        }
+
+
+        //
+        // POST: /Manage/EditProfile
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProfile(ApplicationUser applicationUser)
+        {
+            if (ModelState.IsValid)
+            {
+                string userid = User.Identity.GetUserId();
+                // Get the userprofile
+                ApplicationUser user = db.Users.FirstOrDefault(u => u.Id.Equals(userid));
+
+                // Update fields
+                user.Name = applicationUser.Name;
+                user.Address = applicationUser.Address;
+                user.PrivateProfile = applicationUser.PrivateProfile;
+
+                db.Entry(user).State = EntityState.Modified;
+
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+
+            return View(applicationUser);
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //
         // GET: /Manage/SetPassword

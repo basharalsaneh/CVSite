@@ -68,6 +68,9 @@ namespace CVSiteGrupp15.Models
         [Display(Name = "Namn")]
         public string Name { get; set; }
 
+        [Required]
+        [Display(Name = "Adress")]
+        public string Address { get; set; }
 
         [Required]
         [EmailAddress]
@@ -84,6 +87,12 @@ namespace CVSiteGrupp15.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [Display(Name = "Tillgång till profil")]
+        public bool PrivateProfile { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
