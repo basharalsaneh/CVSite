@@ -64,6 +64,75 @@ input:checked + .slider:before {
 
     .slider.round:before {
         border-radius: 50%;
-    } 
+    }
 
 
+/* Home Page and cv  */
+.portfolio {
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.section-title {
+    margin-top: 70px;
+    margin-bottom: 50px;
+}
+
+.page-section {
+    padding: 6rem 0;
+}
+
+.portfolio .portfolio-item {
+    cursor: pointer;
+    position: relative;
+    display: block;
+    max-width: 25rem;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.justify-content-center {
+    justify-content: center !important;
+}
+
+.row {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+
+
+
+.col-md-6 {
+    flex: 0 0 auto;
+    width: 50%;
+}
+
+.col-lg-4 {
+    flex: 0 0 auto;
+    width: 33.33333333%;
+}
+
+.mb-5 {
+    margin-bottom: 3rem !important;
+}
+
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: auto !important;
+}
+
+
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
