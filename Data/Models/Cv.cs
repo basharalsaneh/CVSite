@@ -14,8 +14,14 @@ namespace Data.Models
         public string UserId { get; set; }
 
         public virtual ApplicationUser ApplicationUser { get; set; }
+        [StringLength(150, ErrorMessage = "Max 150 tecken.")]
+        [Display(Name = "Kompetens")]
         public string Competence { get; set; }
+        [StringLength(150, ErrorMessage = "Max 150 tecken.")]
+        [Display(Name = "Utbildning")]
         public string Education { get; set; }
+        [StringLength(150, ErrorMessage = "Max 150 tecken.")]
+        [Display(Name = "Erfarenhet")]
         public string Experience { get; set; }
 
 

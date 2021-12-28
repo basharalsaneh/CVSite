@@ -289,6 +289,14 @@
       <Project>{f181175f-05e4-496b-b2cf-86bcd8785ff3}</Project>
       <Name>Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{649b85e4-ef92-43ca-88d3-5f4dbf1d55db}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Shared\Shared.csproj">
+      <Project>{c4528995-2350-4d1b-8e92-70b860b5db4b}</Project>
+      <Name>Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
